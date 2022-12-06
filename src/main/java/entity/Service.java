@@ -8,6 +8,10 @@ public class Service {
         serviceId = id;
         this.name = name;
     }
+    public Service(String stringId, String name){
+        serviceId = Integer.parseInt(stringId);
+        this.name = name;
+    }
     public Service(String name){
         serviceId = -1;
         this.name = name;

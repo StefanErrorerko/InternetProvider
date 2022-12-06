@@ -4,14 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caa40e36-7cde-4b91-b3f7-16673dc8eb91" name="Changes" comment="" />
+    <list default="true" id="caa40e36-7cde-4b91-b3f7-16673dc8eb91" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DB/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DB/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/ServiceDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/ServiceDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/SubscribeDocDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/SubscribeDocDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/TariffDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/TariffDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/SubscribeDoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/SubscribeDoc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Tariff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Tariff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/CustomerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CustomerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ServiceModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ServiceModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/SubscribeDocModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/SubscribeDocModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TariffModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TariffModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/CustomerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/CustomerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ServiceView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ServiceView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SubscribeDocView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SubscribeDocView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TariffView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TariffView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/View.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2ILzgYoBZISHaRB6aNm3dwayysj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -19,9 +61,25 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Errorerko/javaprojects/InternetProvider/lib/ojdbc6-11.2.0.3.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="InternetProvider" />
+      <option name="PROGRAM_PARAMETERS" value="$MAVEN_REPOSITORY$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -32,5 +90,16 @@
       <updated>1669975766999</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

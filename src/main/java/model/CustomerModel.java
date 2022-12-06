@@ -2,7 +2,9 @@ package model;
 
 import dao.CustomerDAO;
 import entity.Customer;
+import entity.Tariff;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerModel implements Model<Customer> {
@@ -10,11 +12,17 @@ public class CustomerModel implements Model<Customer> {
 
 
     @Override
-    public Customer getById(int id) {
+    public Customer getById(int id) throws SQLException {
+        List<Customer> customers = getAll();
+        for(Customer customer : customers){
+            if(customer.getId() == id){
+                return customer;
+            }
+        }
         return null;
     }
 
-    public Customer getByLogin(String login){
+    public Customer getByLogin(String login) throws  SQLException{
         List<Customer> customers = getAll();
         Customer customerByLogin = null;
         for(Customer customer : customers){
@@ -26,7 +34,7 @@ public class CustomerModel implements Model<Customer> {
         return customerByLogin;
     }
 
-    public Customer getByParol(String parol){
+    public Customer getByParol(String parol) throws SQLException{
         List<Customer> customers = getAll();
         Customer customerByParol = null;
         for(Customer customer : customers){
@@ -39,11 +47,11 @@ public class CustomerModel implements Model<Customer> {
     }
 
     @Override
-    public List<Customer> getAll() {
+    public List<Customer> getAll() throws SQLException {
         return customerDAO.read();
     }
 
-    public double getBalance(int id){
+    public double getBalance(int id) throws SQLException {
         List<Customer> customers = getAll();
         for(Customer customer : customers){
             if(customer.getId() == id){
@@ -54,16 +62,16 @@ public class CustomerModel implements Model<Customer> {
     }
 
     @Override
-    public void updateById(int id, Customer entity) {
+    public void updateById(int id, Customer entity) throws  SQLException{
 
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(int id) throws  SQLException{
 
     }
 
-    public void updateById(int id, double sum){
+    public void updateById(int id, double sum) throws SQLException{
         Customer updatedCustomer;
         List<Customer> customers = getAll();
         for(Customer customer : customers){
@@ -75,7 +83,7 @@ public class CustomerModel implements Model<Customer> {
         }
     }
 
-    public void updateById(int id, boolean isBanned){
+    public void updateById(int id, boolean isBanned) throws SQLException{
         Customer updatedCustomer;
         List<Customer> customers = getAll();
         for(Customer customer : customers){
@@ -88,7 +96,7 @@ public class CustomerModel implements Model<Customer> {
     }
 
     @Override
-    public void create(Customer entity) {
+    public void create(Customer entity) throws  SQLException{
         customerDAO.create(entity);
         entity.setId(getAll().get(getAll().size() - 1).getId());
     }

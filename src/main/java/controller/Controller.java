@@ -1,10 +1,17 @@
 package controller;
 
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import model.*;
 import view.*;
 import entity.*;
 
+import javax.swing.text.Document;
+import java.io.FileOutputStream;
+import java.sql.SQLException;
 import java.util.*;
+
+import exporter.SQLExporter;
 
 public class Controller {
     private CustomerView customerView;
@@ -16,6 +23,20 @@ public class Controller {
     private ServiceModel serviceModel;
     private TariffModel tariffModel;
     private SubscribeDocModel docModel;
+
+
+    public void bdToPdf(){
+        String path = "jdbc:mysql://127.0.0.1:3306/internetprovider";
+        String user = "root";
+        String password = "1234";
+        SQLExporter exporter = new SQLExporter(path, user, password);
+        try {
+            exporter.exportToPdf();
+        }
+        catch (Exception e){
+            customerView.showError();
+        }
+    }
 
     public void setAllModels(CustomerModel cM, ServiceModel sM, TariffModel tM, SubscribeDocModel dM){
         customerModel = cM;
@@ -33,99 +54,227 @@ public class Controller {
 
 
     public List<Tariff> returnAllTariffs(){
-        return tariffModel.getAll();
+        List<Tariff> tariffs = new ArrayList<Tariff>();
+        try {
+            return tariffModel.getAll();
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
+        return tariffs;
     }
 
     public List<Customer> returnAllCustomers(){
-        return customerModel.getAll();
+        List<Customer> customers = new ArrayList<Customer>();
+        try {
+            return customerModel.getAll();
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
+        return customers;
     }
 
     public Service returnServiceByName(String name){
-        return serviceModel.getByName(name);
+        try{
+            return serviceModel.getByName(name);
+        }
+        catch (SQLException e){
+            serviceView.showError();
+        }
+        return null;
     }
 
     public Tariff returnTariffByName(String name){
-        return tariffModel.getByName(name);
+        try {
+            return tariffModel.getByName(name);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
+        return null;
     }
 
     public Tariff returnTariffById(int id){
-        return tariffModel.getById(id);
+        try {
+            return tariffModel.getById(id);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
+        return null;
+    }
+    public Customer returnCustomerById(int id){
+        try {
+            return customerModel.getById(id);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
+        return null;
     }
 
     public Customer returnCustomerByLogin(String login){
-        return customerModel.getByLogin(login);
+        try {
+            return customerModel.getByLogin(login);
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
+        return null;
     }
 
     public Customer returnCustomerByParol(String parol){
-        return customerModel.getByParol(parol);
+        try {
+            return customerModel.getByParol(parol);
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
+        return null;
     }
 
     public void getAllServices(){
-        List<Service> services = serviceModel.getAll();
-        serviceView.show(services);
+        try{
+            List<Service> services = serviceModel.getAll();
+            serviceView.show(services);
+        }
+        catch (SQLException e){
+            serviceView.showError();
+        }
     }
     public void getAllCustomers(){
-        List<Customer> customers = customerModel.getAll();
-        customerView.show(customers);
+        try {
+            List<Customer> customers = customerModel.getAll();
+            customerView.show(customers);
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
     }
     public void getAllTariffs(){
-        List<Tariff> tariffs = tariffModel.getAll();
-        tariffView.show(tariffs);
+        try{
+            List<Tariff> tariffs = tariffModel.getAll();
+            tariffView.show(tariffs);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
     public void createNewCustomer(Customer customer){
-        customerModel.create(customer);
-        customerView.showCreated(customer);
+        try{
+            customerModel.create(customer);
+            customerView.showCreated(customer);
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
     }
     public void getTariffsAlphaSorted(){
-        List<Tariff> tariffs = tariffModel.readTariffsAlphaSorted();
-        tariffView.show(tariffs);
+        try {
+            List<Tariff> tariffs = tariffModel.readTariffsAlphaSorted();
+            tariffView.show(tariffs);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
     public void getTariffsAlphaRevSorted(){
-        List<Tariff> tariffs = tariffModel.readTariffsAlphaRevSorted();
-        tariffView.show(tariffs);
+        try {
+            List<Tariff> tariffs = tariffModel.readTariffsAlphaRevSorted();
+            tariffView.show(tariffs);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
 
     public void getTariffsPriceSorted(){
-        List<Tariff> tariffs = tariffModel.readTariffsPriceSorted();
-        tariffView.show(tariffs);
+        try {
+            List<Tariff> tariffs = tariffModel.readTariffsPriceSorted();
+            tariffView.show(tariffs);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
 
     public void createNewDoc(Tariff tariff, Customer customer){
-        customerModel.updateById(customer.getId(), -tariff.getPrice());
-        Service service = serviceModel.getById(tariff.getServiceId());
-        docModel.create(tariff, service, customer);
-        if(customerModel.getBalance(customer.getId()) < 0){
-            customer.ban();
+        try {
+            customerModel.updateById(customer.getId(), -tariff.getPrice());
+            Service service = serviceModel.getById(tariff.getServiceId());
+            docModel.create(tariff, service, customer);
+            if(customerModel.getBalance(customer.getId()) < 0){
+                customer.ban();
+            }
+        }
+        catch (SQLException e){
+            docView.showError();
         }
     }
     public void createNewTariff(Tariff tariff){
-        tariffModel.create(tariff);
-        tariffView.showCreated(tariff);
+        try {
+            tariffModel.create(tariff);
+            tariffView.showCreated(tariff);
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
     public void deleteTariffById(int id){
-        tariffModel.deleteById(id);
-        //tariffView.showDeleted();
+        try{
+            tariffModel.deleteById(id);
+            //tariffView.showDeleted();
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
     public void editTariff(int id, Tariff tariff){
-        tariffModel.updateById(id, tariff);
-        //tariffView.showUpdated();
+        try {
+            tariffModel.updateById(id, tariff);
+            //tariffView.showUpdated();
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
 
     public void editTariff(int id, double newPrice){
-        tariffModel.updateById(id, newPrice);
-        //tariffView.showUpdated();
+        try {
+            tariffModel.updateById(id, newPrice);
+            //tariffView.showUpdated();
+        }
+        catch (SQLException e){
+            tariffView.showError();
+        }
     }
 
     public void expandBalance(int id, double sum){
-        customerModel.updateById(id, sum);
-        //customerModel.showUpdated();
+        try{
+            customerModel.updateById(id, sum);
+            //customerModel.showUpdated();
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
     }
     public void banCustomer(int id){
-        customerModel.updateById(id, true);
-        customerView.showBanned();
+        try {
+            customerModel.updateById(id, true);
+            customerView.showBanned();
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
     }
     public void unbanCustomer(int id){
-        customerModel.updateById(id, false);
-        customerView.showUnbanned();
+        try {
+            customerModel.updateById(id, false);
+            customerView.showUnbanned();
+        }
+        catch (SQLException e){
+            customerView.showError();
+        }
     }
 }

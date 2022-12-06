@@ -36,4 +36,9 @@ public class TariffView implements View<Tariff> {
     public void showUpdated() {
 
     }
+
+    @Override
+    public void showError() {
+        System.out.println("Помилка з'єднання з базою даних... Дивно :(");
+    }
 }

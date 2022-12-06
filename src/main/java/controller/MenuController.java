@@ -140,7 +140,6 @@ public class MenuController {
 
     private void setAdminChangeTariff(){
         Scanner sc = new Scanner(System.in);
-        int choiceSize = controller.returnAllTariffs().size() - 1;
 
         int tariffId = -1;
         do{
@@ -156,7 +155,7 @@ public class MenuController {
                 tariffId = -1;
                 sc.next();
             }
-        } while (tariffId < 0 || tariffId > choiceSize);
+        } while (controller.returnTariffById(tariffId) == null);
 
         int choice = 0;
 
@@ -241,7 +240,6 @@ public class MenuController {
         Scanner sc = new Scanner(System.in);
 
 
-        int choiceSize = controller.returnAllCustomers().size() - 1;
         int customerId = -1;
         do{
             System.out.println("Перелік зареєстрованих користувачів:");
@@ -255,7 +253,7 @@ public class MenuController {
                 System.out.println("Введені дані невірні");
                 sc.next();
             }
-        } while (customerId < 0 || customerId > choiceSize);
+        } while (controller.returnCustomerById(customerId) == null);
 
 
         int choice = 0;
@@ -369,7 +367,7 @@ public class MenuController {
         do{
             System.out.println("Введіть, щоб обрати наступну дію");
             System.out.println("1. Обрати тариф і перейти до покупки\n" +
-                    "2. Завантажити тарифи у форматі 'someformat'\n" +
+                    "2. Завантажити тарифи у форматі pdf\n" +
                     "3. Назад\n");
             try{
                 choice = sc.nextInt();
@@ -377,7 +375,8 @@ public class MenuController {
                     setUserChooseTariff();
                 }
                 else if(choice == 2){
-                    System.out.println("Kinda downloaded");
+                    controller.bdToPdf();
+                    System.out.println("Готово!");
                 }
             }
             catch (Exception ex){
@@ -393,7 +392,6 @@ public class MenuController {
         Scanner sc = new Scanner(System.in);
 
 
-        int choiceSize = controller.returnAllTariffs().size() - 1;
         int tariffId = -1;
         do{
             System.out.println("Оберіть один з наявних планів:");
@@ -405,7 +403,7 @@ public class MenuController {
                 tariffId = -1;
                 sc.next();
             }
-        } while (tariffId < 0 || tariffId > choiceSize);
+        } while (controller.returnTariffById(tariffId) == null);
 
 
         int choice = 0;
@@ -423,13 +421,15 @@ public class MenuController {
             }
         } while (choice != 1 && choice != 2);
         if(choice == 1){
-            Tariff tariff = controller.returnTariffById(tariffId);
-            Customer customer = controller.returnCustomerByLogin(currentLogin);
-            controller.createNewDoc(tariff, customer);
+            if(controller.returnTariffById(tariffId) != null){
+                Tariff tariff = controller.returnTariffById(tariffId);
+                Customer customer = controller.returnCustomerByLogin(currentLogin);
+                controller.createNewDoc(tariff, customer);
 
-            if(customer.banStatus()){
-                System.out.println("Вас було забанено через брак коштів на рахунку. Уведіть будь-що, щоб продовжити");
-                String smth = sc.nextLine();
+                if(customer.banStatus()){
+                    System.out.println("Вас було забанено через брак коштів на рахунку. Уведіть будь-що, щоб продовжити");
+                    String smth = sc.nextLine();
+                }
             }
         }
     }

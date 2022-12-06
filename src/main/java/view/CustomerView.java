@@ -42,6 +42,11 @@ public class CustomerView implements View<Customer> {
 
     }
 
+    @Override
+    public void showError() {
+        System.out.println("Помилка з'єднання з базою даних... Дивно :(");
+    }
+
     public void showBanned(){
         System.out.println("Customer was banned");
     }

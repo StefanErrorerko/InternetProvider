@@ -29,4 +29,9 @@ public class ServiceView implements View<Service> {
     public void showUpdated() {
 
     }
+
+    @Override
+    public void showError() {
+        System.out.println("Помилка з'єднання з базою даних... Дивно :(");
+    }
 }

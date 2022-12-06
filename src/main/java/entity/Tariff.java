@@ -13,6 +13,13 @@ public class Tariff {
         this.price = price;
     }
 
+    public Tariff(String id, String name, String price, String sId){
+        tariffId = Integer.parseInt(id);
+        this.name = name;
+        serviceId = Integer.parseInt(sId);
+        this.price = Double.parseDouble(price);
+    }
+
     public Tariff(String name, int sId, double price){
         tariffId = -1;
         this.name = name;

@@ -4,6 +4,7 @@ import entity.Service;
 import dao.*;
 
 import java.nio.file.attribute.UserDefinedFileAttributeView;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceModel implements Model<Service> {
@@ -11,7 +12,7 @@ public class ServiceModel implements Model<Service> {
 
 
     @Override
-    public Service getById(int id) {
+    public Service getById(int id) throws  SQLException{
         List<Service> services = getAll();
         for(Service service : services){
             if(service.getId() == id){
@@ -21,7 +22,7 @@ public class ServiceModel implements Model<Service> {
         return null;
     }
 
-    public Service getByName(String name){
+    public Service getByName(String name) throws SQLException{
         List<Service> services = getAll();
         for(Service service : services){
             if(service.getName().equals(name)){
@@ -32,22 +33,22 @@ public class ServiceModel implements Model<Service> {
     }
 
     @Override
-    public List<Service> getAll() {
+    public List<Service> getAll() throws SQLException {
         return serviceDao.read();
     }
 
     @Override
-    public void updateById(int id, Service entity) {
+    public void updateById(int id, Service entity) throws  SQLException{
 
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(int id) throws SQLException{
 
     }
 
     @Override
-    public void create(Service entity) {
+    public void create(Service entity) throws SQLException{
 
     }
 }

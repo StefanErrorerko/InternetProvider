@@ -7,4 +7,5 @@ public interface View<T> {
     public void showCreated(T entity);
     public void showDeleted();
     public void showUpdated();
+    public void showError();
 }

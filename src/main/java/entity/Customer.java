@@ -20,6 +20,21 @@ public class Customer {
         this.parol = parol;
     }
 
+    public Customer(String id, String name, String surname, String sum, String login, String parol, String isBanned){
+        customerId = Integer.parseInt(id);
+        this.name = name;
+        this.surname = surname;
+        this.sum = Double.parseDouble(sum);
+        this.login = login;
+        this.parol = parol;
+        if(isBanned.equals("1")){
+            this.isBanned = true;
+        }
+        else {
+            this.isBanned = false;
+        }
+    }
+
     public Customer(String name, String surname, String login, String parol){
         customerId = -1;
         this.name = name;
@@ -52,14 +67,14 @@ public class Customer {
     }
 
     //sets
-    public void setId(int id){ customerId = id; }
-    public void setName(String name){ this.name = name; }
-    public void setSurname(String surname){ this.surname = surname; }
-    public void setLogin(String login){ this.login = login; }
-    public void setParol(String parol){ this.parol = parol; }
-    public void setSum(double sum){ this.sum = sum; }
-    public void ban(){isBanned = true;}
-    public void unban(){isBanned = false;}
-    public void setBan(boolean isBanned){this.isBanned = isBanned;}
+    public void setId(int id) { customerId = id; }
+    public void setName(String name) { this.name = name; }
+    public void setSurname(String surname) { this.surname = surname; }
+    public void setLogin(String login) { this.login = login; }
+    public void setParol(String parol) { this.parol = parol; }
+    public void setSum(double sum) { this.sum = sum; }
+    public void ban() {isBanned = true;}
+    public void unban() {isBanned = false;}
+    public void setBan(boolean isBanned) {this.isBanned = isBanned;}
 
 }

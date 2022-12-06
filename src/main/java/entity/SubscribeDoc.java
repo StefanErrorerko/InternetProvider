@@ -12,6 +12,13 @@ public class SubscribeDoc {
         tariffId = tId;
         customerId = id;
     }
+
+    public SubscribeDoc(String  id, String sId, String tId, String cId){
+        docId = Integer.parseInt(id);
+        serviceId = Integer.parseInt(sId);
+        tariffId = Integer.parseInt(tId);
+        customerId = Integer.parseInt(id);
+    }
     public SubscribeDoc(int sId, int tId, int cId){
         docId = -1;
         serviceId = sId;
